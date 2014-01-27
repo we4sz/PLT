@@ -1,5 +1,10 @@
+*.tex
 *.bat
 *.class
+*.java
+*.cup
+Yylex
+MakeFile
 
 # Package Files #
 *.jar

@@ -11,7 +11,6 @@ comment "//" ;
 comment "/*" "*/" ;
 
 SIncl. Def  ::= "#" "include" "<" Id ">" ;
-
 DFun. 	Def ::= Type Id "(" [Arg] ")" "{" [Stm] "}" ;
 
 ADecl. 	Arg ::= Type Id ;
@@ -28,20 +27,10 @@ SIfElse. Stm ::= "if" "(" Exp ")" Stm "else" Stm ;
 Tbool. Type ::= "bool" ;
 Tdouble. Type ::= "double" ;
 Tint. Type ::= "int" ;
-Tstring. Type ::= "string" ;
 Tvoid. Type ::= "void" ;
 
-
-
-
-
-
-
-
-
-
-
-
+EQualC. Exp15 ::= Id "::" [Id] ;
+separator nonempty Id "::" ;
 
 EInt. Exp15 ::= Integer ;
 EDouble. Exp15 ::= Double ;
@@ -59,6 +48,8 @@ EMul. Exp12 ::= Exp12 "*" Exp13 ;
 EDiv. Exp12 ::= Exp12 "/" Exp13 ;
 EAdd. Exp11 ::= Exp11 "+" Exp12 ;
 ESub. Exp11 ::= Exp11 "-" Exp12 ;
+LShift.  Exp10 ::= Exp10 "<<" Exp11 ;
+RShift.  Exp10 ::= Exp10 ">>" Exp11 ;
 ELt. Exp9 ::= Exp9 "<" Exp10 ;
 EGt. Exp9 ::= Exp9 ">" Exp10 ;
 ELEq. Exp9 ::= Exp9 "<=" Exp10 ;

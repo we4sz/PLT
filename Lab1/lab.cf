@@ -1,0 +1,55 @@
+-- programs
+
+Prog.		Program ::= [Def] ;
+
+-- definitions
+
+DFunc.		Def ::= Type Id "(" [ArgDecl] ")" Body ;
+separator 	Def "" ;
+
+-- argument declarations and functions bodies
+
+separator 	ArgDecl "," ;
+
+ATypVar.	ArgDecl ::= Type Id ;
+
+BStm.		Body ::= "{" [Stm] "}" ;
+
+terminator	Stm "" ;
+
+-- statements
+
+SExp.		Stm ::= Exp ";" ;
+SReturn.	Stm ::= "return" Exp ";" ;
+
+-- expressions
+
+EInt.		Exp16 ::= Integer ;
+EString.	Exp16 ::= String ;
+EConst.		Exp15 ::= QConst ;
+ELShift.	Exp10 ::= Exp10 "<<" Exp11 ;
+ERShift.	Exp10 ::= Exp10 ">>" Exp11 ;
+
+coercions Exp 16 ;
+
+-- qualified constatns
+
+QCon.		QConst ::= [Const] ;
+
+separator 	nonempty Const "::" ;
+
+CId.		Const ::= Id ;
+
+-- types
+
+TInt.		Type ::= "int" ;
+TConst.		Type ::= QConst ;
+
+-- identifiers
+
+token Id (letter (letter | digit | '_')*) ;
+
+-- TODO comments
+
+comment		"//" ;
+comment 	"*/" "*/" ;
